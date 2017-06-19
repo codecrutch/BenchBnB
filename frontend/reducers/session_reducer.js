@@ -11,12 +11,13 @@ const defaultState = Object.freeze({
 
 const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  debugger
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, action.currentUser);
+      const currentUser = action.currentUser;
+      return merge({}, state, { currentUser });
     case RECEIVE_ERRORS:
-      return merge({}, state, action.errors);
+      const errors = action.errors.responseJSON;
+      return merge({}, state, { errors });
     default:
       return state;
   }

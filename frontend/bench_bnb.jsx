@@ -5,7 +5,19 @@ import Root from './components/root';
 import * as actions from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
+  let store;
+
+  if (window.currentUser) {
+    console.log("YAYAYAYAYAY", window.currentUser);
+    const preloadedState = { session: { currentUser: window.currentUser, errors: [] } };
+    store = configureStore(preloadedState);
+
+  } else {
+    store = configureStore();
+  }
+
+    console.log(store.getState());
+
   // JUST FOR TESTING
     window.login = actions.login;
     window.signup = actions.signup;
@@ -13,7 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.getState = store.getState;
     window.dispatch = store.dispatch;
+
   //
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 });
+
+//store.dispatch(actions.login({ user: {username: 'todd', password: 'idontknow'}}));

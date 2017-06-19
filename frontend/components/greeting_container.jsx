@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Greeting from './greeting';
 import { logout } from '../actions/session_actions';
 
-const mapStateToProps = ({ currentUser }) => ({
-  currentUser
-});
+const mapStateToProps = ({session}) => {
+  return ({
+    currentUser: session.currentUser
+  });
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logoout())
+  logout: () => dispatch(logout())
 });
 
 export default connect(
