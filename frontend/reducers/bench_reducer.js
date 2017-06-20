@@ -9,10 +9,8 @@ const defaultState = {};
 const BenchReducer = (state = defaultState, action) => {
   Object.freeze(state);
   let newState;
-  debugger
   switch (action.type) {
     case RECEIVE_ALL_BENCHES:
-    debugger
       newState = merge({}, state, action.benches);
       return newState;
     case RECEIVE_BENCH:

@@ -33,3 +33,5 @@ export const createBench = (bench) => dispatch => {
       (bench) => dispatch(receiveBench(bench))
     );
 };
+
+window.fetchBenches = fetchBenches;

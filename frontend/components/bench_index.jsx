@@ -11,7 +11,7 @@ class BenchIndex extends React.Component {
   }
 
   render(){
-    let allBenches = this.props.benches.map( bench => <BenchIndexItem bench={bench} />)
+    let allBenches = this.props.benches.map( bench => <BenchIndexItem key={bench.id} bench={bench} />)
     return (
       <ul>
        {allBenches}
